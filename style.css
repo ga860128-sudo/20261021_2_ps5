@@ -1,0 +1,564 @@
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  min-width: 320px;
+  min-height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: #090e18;
+  color: #f4f7fb;
+  font-family: "Microsoft JhengHei", "Noto Sans TC", sans-serif;
+}
+
+button,
+input {
+  font: inherit;
+}
+
+.app-shell {
+  width: min(100% - 48px, 1280px);
+  margin: 0 auto;
+  padding: 30px 0 42px;
+}
+
+.tab-navigation {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 28px;
+  padding: 8px;
+  border: 1px solid #263349;
+  border-radius: 14px;
+  background: #111a29;
+}
+
+.tab-button {
+  min-height: 48px;
+  flex: 1;
+  padding: 10px 18px;
+  border: 1px solid transparent;
+  border-radius: 9px;
+  background: transparent;
+  color: #aebbd0;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.tab-button:hover {
+  background: #1a2940;
+  color: #ffffff;
+}
+
+.tab-button.is-active {
+  border-color: #4c91e8;
+  background: #2769b5;
+  color: #ffffff;
+}
+
+.tab-panel[hidden] {
+  display: none;
+}
+
+.page-title {
+  margin: 8px 0 28px;
+  color: #f4f7fb;
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  text-align: center;
+}
+
+.clock-panel {
+  text-align: center;
+  padding: 14px 20px 22px;
+}
+
+.date-display {
+  color: #aebbd0;
+  font-size: clamp(1.25rem, 2.5vw, 2rem);
+  font-weight: 600;
+  letter-spacing: 0.08em;
+}
+
+.clock-display {
+  margin-top: 4px;
+  color: #ffffff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: clamp(5rem, 19vw, 15rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 700;
+  letter-spacing: 0.035em;
+  line-height: 1.1;
+  text-shadow: 0 0 44px rgb(70 145 255 / 20%);
+}
+
+.exam-information {
+  margin: 0 auto;
+  padding: 22px 26px;
+  border: 1px solid #263349;
+  border-radius: 18px;
+  background: #111a29;
+}
+
+.exam-details {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px 28px;
+}
+
+.info-item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.info-label {
+  color: #9eacc0;
+  font-size: 1rem;
+}
+
+.info-value {
+  overflow-wrap: anywhere;
+  color: #f7f9fc;
+  font-size: clamp(1.25rem, 2.3vw, 2rem);
+  font-weight: 700;
+}
+
+.countdown {
+  margin-top: 23px;
+  color: #8cc7ff;
+  font-size: clamp(1.5rem, 3.7vw, 3.2rem);
+  font-weight: 800;
+  text-align: center;
+}
+
+.countdown.is-warning {
+  color: #ff626b;
+}
+
+.settings-panel {
+  margin-top: 26px;
+  padding: 22px;
+  border: 1px solid #263349;
+  border-radius: 18px;
+  background: #111a29;
+}
+
+.settings-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 18px;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.field label {
+  color: #b8c4d6;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.field input {
+  width: 100%;
+  min-height: 48px;
+  padding: 10px 13px;
+  border: 1px solid #3a4a62;
+  border-radius: 9px;
+  outline: none;
+  background: #0b1220;
+  color: #f4f7fb;
+  font-size: 1.1rem;
+}
+
+.field input:focus {
+  border-color: #62aaff;
+  box-shadow: 0 0 0 3px rgb(98 170 255 / 18%);
+}
+
+.field input::placeholder {
+  color: #718096;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.fullscreen-button {
+  min-height: 48px;
+  padding: 10px 24px;
+  border: 1px solid #4c91e8;
+  border-radius: 10px;
+  background: #2769b5;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.fullscreen-button:hover {
+  background: #347dcf;
+}
+
+.manual-bells {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+  max-width: 900px;
+  margin: 36px auto 12px;
+}
+
+.bell-button {
+  min-height: 190px;
+  border: 1px solid #46658f;
+  border-radius: 20px;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: clamp(2rem, 5vw, 3.5rem);
+  font-weight: 800;
+  box-shadow: 0 14px 32px rgb(0 0 0 / 20%);
+  transition: transform 120ms ease, filter 120ms ease;
+}
+
+.bell-button:hover {
+  filter: brightness(1.12);
+  transform: translateY(-2px);
+}
+
+.bell-button:active {
+  transform: translateY(1px);
+}
+
+.start-bell {
+  background: linear-gradient(145deg, #2563a9, #174276);
+}
+
+.end-bell {
+  background: linear-gradient(145deg, #a04b41, #692e2a);
+}
+
+.audio-status,
+.pomodoro-status {
+  min-height: 1.5em;
+  margin: 14px 0 24px;
+  color: #9eacc0;
+  text-align: center;
+}
+
+.schedule-panel {
+  max-width: 920px;
+  margin: 26px auto 0;
+}
+
+.section-title {
+  margin: 0 0 18px;
+  color: #e8eef7;
+  font-size: 1.5rem;
+}
+
+.schedule-form {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr)) auto;
+  align-items: end;
+  gap: 16px;
+}
+
+.secondary-button,
+.delete-button {
+  min-height: 48px;
+  padding: 10px 18px;
+  border: 1px solid #4c91e8;
+  border-radius: 9px;
+  background: #1b548d;
+  color: #ffffff;
+  cursor: pointer;
+  font-weight: 700;
+}
+
+.secondary-button:hover,
+.delete-button:hover {
+  background: #2769b5;
+}
+
+.auto-bell-toggle {
+  margin: 22px 0 12px;
+  color: #e4ebf5;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.auto-bell-toggle label {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+}
+
+.auto-bell-toggle input {
+  width: 22px;
+  height: 22px;
+  accent-color: #4c91e8;
+}
+
+.schedule-list {
+  display: grid;
+  gap: 10px;
+}
+
+.schedule-row {
+  display: grid;
+  grid-template-columns: minmax(70px, 1fr) minmax(140px, 2fr) auto;
+  align-items: center;
+  gap: 16px;
+  padding: 12px 14px;
+  border: 1px solid #2d3b50;
+  border-radius: 10px;
+  background: #0b1220;
+}
+
+.schedule-period {
+  color: #b8c4d6;
+  font-weight: 700;
+}
+
+.schedule-time {
+  color: #f4f7fb;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
+.delete-button {
+  min-height: 40px;
+  border-color: #81444a;
+  background: #592d34;
+}
+
+.delete-button:hover {
+  background: #803b43;
+}
+
+.empty-schedule {
+  padding: 18px 0 4px;
+  color: #9eacc0;
+  text-align: center;
+}
+
+.pomodoro-card {
+  max-width: 920px;
+  margin: 0 auto;
+  padding: clamp(24px, 5vw, 54px);
+  border: 1px solid #263349;
+  border-radius: 22px;
+  background: #111a29;
+  text-align: center;
+}
+
+.pomodoro-phase {
+  color: #8cc7ff;
+  font-size: clamp(1.5rem, 3vw, 2.3rem);
+  font-weight: 700;
+}
+
+.pomodoro-display {
+  margin: 8px 0;
+  color: #ffffff;
+  font-family: Consolas, "Courier New", monospace;
+  font-size: clamp(6rem, 24vw, 14rem);
+  font-variant-numeric: tabular-nums;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  line-height: 1.08;
+  text-shadow: 0 0 44px rgb(70 145 255 / 20%);
+}
+
+.pomodoro-round {
+  color: #d5dfed;
+  font-size: clamp(1.25rem, 2.5vw, 1.8rem);
+  font-weight: 700;
+}
+
+.pomodoro-status {
+  margin: 10px 0 24px;
+}
+
+.pomodoro-controls {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.timer-button {
+  min-width: 110px;
+  min-height: 50px;
+  padding: 10px 20px;
+  border: 1px solid #3a4a62;
+  border-radius: 10px;
+  background: #1a2940;
+  color: #f4f7fb;
+  cursor: pointer;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.timer-button:hover {
+  background: #263b59;
+}
+
+.timer-button.pomodoro-start {
+  border-color: #4c91e8;
+  background: #2769b5;
+}
+
+.timer-button.pomodoro-start:hover {
+  background: #347dcf;
+}
+
+.pomodoro-settings {
+  max-width: 920px;
+  margin: 24px auto 0;
+}
+
+.pomodoro-settings-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+body.is-fullscreen {
+  overflow: auto;
+}
+
+body.is-fullscreen .tab-navigation {
+  display: none;
+}
+
+body.is-fullscreen .settings-panel,
+body.is-fullscreen .actions {
+  display: none;
+}
+
+body.is-fullscreen .app-shell {
+  width: min(100% - 64px, 1500px);
+  padding-top: clamp(20px, 5vh, 70px);
+}
+
+body.is-fullscreen .clock-panel {
+  padding-bottom: clamp(24px, 6vh, 70px);
+}
+
+body.is-fullscreen .exam-information {
+  padding: clamp(22px, 4vh, 42px);
+}
+
+@media (max-width: 700px) {
+  .app-shell {
+    width: min(100% - 28px, 560px);
+    padding-top: 18px;
+  }
+
+  .tab-navigation {
+    gap: 4px;
+    margin-bottom: 18px;
+    padding: 5px;
+  }
+
+  .tab-button {
+    min-height: 44px;
+    padding: 8px 5px;
+    font-size: 0.9rem;
+  }
+
+  .clock-panel {
+    padding: 12px 0 18px;
+  }
+
+  .clock-display {
+    font-size: clamp(4.2rem, 19vw, 8rem);
+  }
+
+  .exam-information,
+  .settings-panel {
+    padding: 18px;
+  }
+
+  .exam-details,
+  .settings-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+  }
+
+  .manual-bells {
+    gap: 12px;
+    margin-top: 22px;
+  }
+
+  .bell-button {
+    min-height: 150px;
+  }
+
+  .schedule-form {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .schedule-form .secondary-button {
+    grid-column: 1 / -1;
+  }
+}
+
+@media (max-width: 420px) {
+  .exam-details,
+  .settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  body.is-fullscreen .app-shell {
+    width: min(100% - 28px, 560px);
+  }
+
+  .manual-bells {
+    grid-template-columns: 1fr;
+  }
+
+  .bell-button {
+    min-height: 120px;
+  }
+
+  .schedule-row {
+    grid-template-columns: 1fr auto;
+    gap: 8px 12px;
+  }
+
+  .schedule-time {
+    grid-row: 2;
+  }
+
+  .schedule-row .delete-button {
+    grid-column: 2;
+    grid-row: 1 / 3;
+  }
+
+  .pomodoro-settings-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .timer-button {
+    min-width: 42%;
+  }
+}
+
+@media (display-mode: fullscreen) {
+  body {
+    min-height: 100vh;
+  }
+}
